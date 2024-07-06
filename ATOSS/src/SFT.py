@@ -55,7 +55,7 @@ def init_args():
     parser.add_argument("--save_top_k", default=1, type=int, help="Number of top models to save")
     parser.add_argument("--check_val_every_n_epoch", default=1, type=int, help="Validation checks per number of epochs")
     parser.add_argument("--load_path_cache", action='store_true', help="Whether to load path cache")
-    parser.add_argument("--lowercase", action='store_true', help="Whether to convert all inputs to lowercase")
+    parser.add_argument("--lowercase", default=True, type=bool, help="Whether to lowercase the input text")
 
     args = parser.parse_args()
 

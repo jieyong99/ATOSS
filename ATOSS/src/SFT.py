@@ -193,7 +193,7 @@ class T5FineTuner(pl.LightningModule):
         print("load training data.")
         train_dataset = ABSADataset(tokenizer=self.tokenizer,
                             task_name=self.config.task,
-                            data_type=self.config.train,
+                            data_type='train',
                             args=self.config,
                             max_len=self.config.max_seq_length)
         dataloader = DataLoader(
@@ -208,7 +208,7 @@ class T5FineTuner(pl.LightningModule):
     def val_dataloader(self):
         val_dataset = ABSADataset(tokenizer=self.tokenizer,
                             task_name=self.config.task,
-                            data_type=self.config.train,
+                            data_type='dev',
                             args=self.config,
                             max_len=self.config.max_seq_length)
         return DataLoader(val_dataset,
@@ -227,7 +227,7 @@ tokenizer = T5Tokenizer.from_pretrained(args.model_name_or_path)
 print(f"Here is an example (from the dev set):")
 dataset = ABSADataset(tokenizer=tokenizer,
                     task_name=args.task,
-                    data_type=args.train,
+                    data_type='dev',
                     args=args,
                     max_len=args.max_seq_length)
 
